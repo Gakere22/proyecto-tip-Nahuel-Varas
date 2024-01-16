@@ -1,0 +1,101 @@
+
+
+@media  screen and (max-width: 578px){ 
+    .titulo{
+        margin: auto;
+    }
+    .parrafo{
+        font-family: 'Montserrat', sans-serif; 
+        font-size: $fuente-size-ms;
+        margin:  auto;
+        text-align: center;
+        margin-top: 1.5%;
+    }
+}
+
+@media screen and (min-width: 579px){
+    .titulo{
+        margin: 0, auto;
+    }
+    .parrafo{
+        font-family: 'Montserrat', sans-serif; 
+        font-size: 2.5rem;
+        margin:  auto;
+        text-align: center;
+        max-width: $ancho-max;
+        margin-top: 5%;
+    }
+}
+       
+
+
+@media only screen and (max-width: 668px){
+    .contenedor-home-ubicacion {
+        margin: auto;
+        margin-top: 3rem;
+    }
+}
+
+.parrafo_banner_home{
+    @include flex-base;
+    font-family: 'Mooli', sans-serif;
+    font-size: 5rem;
+    font-weight: 300;
+    @include alto-ancho(null,100%);
+    height: 350px;
+    text-align: center;
+    color: $color-base2;
+    margin-top: 10%;
+  
+}
+
+@media only screen and (max-width: 668px){
+    .contenedor-home{
+        @include alto-ancho(null,100%);
+        @include flex-base-adaptable;
+        margin:  auto;
+        max-width: $ancho-max;
+        
+    }
+}
+
+@media only screen and (min-width: 669px){
+    .contenedor-home{
+        @include alto-ancho(null,100%);
+        @include flex-base-adaptable;
+        gap: 20rem;
+        margin: 5% auto;
+        max-width: $ancho-max;
+    }
+}
+
+@media only screen and (max-width: 668px){
+    .contenedor-home-caja{
+        @include flex-centro;
+        margin: 5% auto;
+        @include alto-ancho(null,100%);
+    }
+}
+
+.contenedor_seguros{
+    @include flex-base-adaptable;
+    margin: 0 auto;
+    gap: 1rem 10rem;
+    margin-bottom: 2rem;
+    margin-top: 5%;
+}
+
+.boton_seguros {
+    background-color: $color-base3;
+    width: 11rem;
+    height: 10rem;
+    font-size: 2rem;
+    border: none;
+    border-style: outset;
+    font-family: 'Montserrat', sans-serif;
+    color: $color-base2;
+}
+
+.ubicacion{
+    margin-bottom: 10%;
+}

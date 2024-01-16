@@ -1,0 +1,137 @@
+.encabezado{
+    @include flex-centro-adaptable;
+    width: 100%;
+    height: 100%;
+    background-color: $color-encabezado;
+    gap:0.5rem 50rem;
+    margin: 0 auto;
+    max-width: $ancho-max;    
+}
+
+ 
+@media only screen and (max-width: 768px){
+    .carousel{
+        max-width: $ancho-max;
+        margin: auto;
+        margin-top: 7rem;
+        
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .carousel{
+        max-width: $ancho-max;
+        margin: auto;
+        
+    }
+}
+
+
+
+
+
+@media only screen and (max-width: 768px){
+    .navbar{
+        max-width: $ancho-max;
+        margin: auto;
+    }
+
+
+    .logo{
+        filter: sepia(80%);
+        width: 70%;
+        height: 70%; 
+    }
+    
+   
+
+
+    .container-fluid{
+        background-color: $color-encabezado;
+        
+    }
+    
+
+    .navbar-toggler:hover{
+        border: 2px solid $color-base2; 
+        
+    }
+    .navbar-toggler:focus{/*anulo el focus que aplica boostrap sobre el borde del boton menu cuando se agrupa*/
+        color: $color-base2;
+    }
+
+    .offcanvas-end{
+        background-color: $color-base2;
+    }
+
+    .nav-link{
+        margin-left: 20px;
+        text-align: right;
+        transition: all 1s ease-in-out; /* convierte puntero en mano*/
+        font-family: 'Mooli', sans-serif;
+        font-size: $fuente-size-ms;
+    
+    }
+    .nav-link:hover{  /* para darle estilo al link cuando se le pasa por arriba con el puntero*/
+        border-bottom: 2px solid $color-base3;
+        color: $color-base2;
+    }
+
+    ul {
+        list-style-type: none;
+    }
+
+    a {
+        text-decoration: none;
+        color: $color-base1;
+    }
+}
+
+@media only screen and (min-width: 767px){
+    .navbar{
+        max-width: $ancho-max;
+        margin: auto;
+
+    }
+
+   
+    .container-fluid{
+        background-color: $color-encabezado;
+        
+    }
+   
+    .navbar-toggler:hover{
+        border: 2px solid $color-base2; 
+        
+    }
+    .navbar-toggler:focus{/*anulo el focus que aplica boostrap sobre el borde del boton menu cuando se agrupa*/
+        color: $color-base2;
+    
+    }
+    
+    .offcanvas-end{
+        background-color: $color-base2;
+    }
+    
+    .nav-link{
+        margin-left: 20px;
+        text-align: right;
+        transition: all 1s ease-in-out; /* convierte puntero en mano*/
+        font-family: 'Mooli', sans-serif;
+        font-size: $fuente-size-ms;
+       
+    }
+    .nav-link:hover{  /* para darle estilo al link cuando se le pasa por arriba con el puntero*/
+        border-bottom: 2px solid $color-base3 ;
+        color: $color-base2;
+    }
+    
+    ul {
+        list-style-type: none;
+    }
+    
+    a {
+        text-decoration: none;
+        color: $fuente-color;
+    }
+}

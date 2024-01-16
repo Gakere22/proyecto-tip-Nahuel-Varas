@@ -1,0 +1,49 @@
+.pie_pagina{
+    @include flex-base;
+    width: 100%;
+    max-width: $ancho-max;
+    border-top: 6px solid whitesmoke;
+    gap: 50%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+
+    &-mapa{
+        margin-top: 2rem; 
+        margin-bottom: 2rem;
+    }
+
+    &-redes{
+
+        @include flex-centro-adaptable;
+        gap: 2rem;
+
+        &-instagram,&-facebook,&-whatsapp{
+            border-radius: 12px;
+            width: 4rem;
+            height: 4rem;
+            text-align: center;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
+         &-instagram {
+            background: radial-gradient(circle at  30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+        }
+
+        &-facebook{
+            background-color: rgb(37, 37, 157);
+        }
+
+        &-whatsapp{
+            background-color: #00bb2d;
+        }
+
+        &-instagram-item,&-facebook-item,&-whatsapp-item{
+            font-size: 2.8rem;
+            color: white;
+            //para posicionar el icono de la red social en el centro del color
+              position: relative;
+              bottom: 3%;
+        }
+        
+    }
+}

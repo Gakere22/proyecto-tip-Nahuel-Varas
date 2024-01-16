@@ -1,0 +1,45 @@
+
+@media screen and (max-width: 578px){
+    .titulo{
+        font-family: 'Mooli', sans-serif;
+        font-size: 2rem;
+        text-align: center;
+        margin:  auto;
+        margin-top: 2rem;
+        max-width: 580px;
+}
+
+}
+
+@media screen and (min-width: 579px){
+    .titulo{
+        font-family: 'Mooli', sans-serif;
+        font-size: 3.5rem;
+        text-align: center;
+        margin:  auto;
+        margin-top: 5%;
+        max-width: $ancho-max;
+    }
+}
+
+@media screen and (max-width: 578px){
+    .titulo1{
+        font-family: 'Mooli', sans-serif;
+        font-size: 2rem;
+        text-align: center;
+        margin:  auto;
+        margin-top: 3.5rem;
+        max-width: 580px;
+    }
+}
+
+@media screen and (min-width: 579px) {
+    .titulo1{
+        font-family: 'Mooli', sans-serif;
+        font-size: 2rem;
+        text-align: center;
+        margin:  auto;
+        margin-top: 10%;
+        max-width: $ancho-max;
+    }
+}

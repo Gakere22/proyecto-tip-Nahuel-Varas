@@ -1,0 +1,33 @@
+@mixin flex-base{
+    display: flex;
+    justify-content: center;
+}
+
+@mixin flex-base-adaptable{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+@mixin flex-centro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-centro-adaptable{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+@mixin flex($display, $justify, $align, $gap){
+    display: $display;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+}
+@mixin alto-ancho($alto,$ancho){
+    width: $ancho;
+    height: $alto;
+}

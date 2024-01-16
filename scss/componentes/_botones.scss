@@ -1,0 +1,12 @@
+.btn {
+    border: 1px solid $color-base3;
+    font-size: 2rem;
+    width: 100%;
+}
+.boton{
+    background-color: $color-base3;
+}
+.boton:hover{
+    background-color: $color-encabezado;
+    border: 1px solid $color-base3;
+}

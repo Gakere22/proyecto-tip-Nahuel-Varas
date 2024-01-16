@@ -1,0 +1,197 @@
+
+@media only screen and (max-width:768px){
+    .banner_finanzas{
+        @include flex-centro-adaptable;
+        gap: 2px 18rem;
+        @include alto-ancho(100%,100%);
+        background-color: $color-base5 ;
+        margin:  auto;
+        margin-top: 7rem;
+    }
+
+    .cuadro_imagen_finanzas{
+        @include alto-ancho(null,100%);
+        margin-left: 0;
+    }
+
+
+    .imagen_finanzas{
+        margin:  auto;
+        filter: sepia(50%);
+        @include alto-ancho(100%,100%);
+        max-width: 100%;
+        min-width: 400px;
+        max-height: 100%;
+        @include flex-base;
+        margin-left: 0;
+    }
+
+    .texto_banner_finanzas{  
+        color: $color-base2;
+        text-justify:center;
+        font-family: 'Mooli', sans-serif;
+        font-size: 0;
+        margin: 0 auto;
+        @include flex(flex,null,null,nnull);
+        text-align: center;
+        @include alto-ancho(null,100%);
+        }
+
+
+    .contenedor_finanzas{
+        @include flex-centro-adaptable;
+        gap: 2px 10rem;
+        @include alto-ancho(100%,100%);
+        max-width: $ancho-max;
+        max-height: 1000px;  
+        margin:  auto;  
+        margin-top: 10%;
+        margin-bottom: 10%;
+    
+        &-ubicacion_finanzas{
+            margin-bottom: 2rem;
+        }
+    }
+
+    
+}
+
+@media only screen and (min-width:769px) and (max-width:1176px){
+    .banner_finanzas{
+        @include flex-centro-adaptable;
+        gap: 2px 18rem;
+        @include alto-ancho(100%,100%);
+        background-color: $color-base5;
+        max-width: $ancho-max;
+        margin:  auto;
+        margin-top: 5rem;
+        
+    }
+
+    .cuadro_imagen_finanzas{
+        @include alto-ancho(null,100%);
+        margin-left: 0;
+    }
+
+
+    .imagen_finanzas{
+        margin:  auto;
+        filter: sepia(50%);
+        @include alto-ancho(100%,100%);
+        max-width: 100%;
+        min-width: 400px;
+        max-height: 100%;
+        @include flex-base;
+        margin-left: 0;
+    }
+    
+    .texto_banner_finanzas{  
+        color: $color-base2;
+        text-justify:center;
+        font-family: 'Mooli', sans-serif;
+        font-size: 0;
+        margin: 0 auto;
+        @include flex(flex,null,null,null);
+        text-align: center;
+        @include alto-ancho(null,100%); 
+        }
+
+
+    .contenedor_finanzas{
+        @include flex-centro-adaptable;
+        gap: 2px 10rem;
+        @include alto-ancho(100%,100%);
+        max-width: $ancho-max;
+        max-height: 1000px;  
+        margin:  auto;  
+        margin-top: 10%;
+        margin-bottom: 10%;
+
+        &-ubicacion_finanzas{
+            margin-bottom: 2rem;
+        }
+    }
+}
+
+
+
+@media only screen and (min-width:1177px){
+    .banner_finanzas{
+        @include flex-centro-adaptable;
+        gap: 2px 18rem;
+        @include alto-ancho(100%,100%);
+        background-color: $color-base5;
+        max-width: $ancho-max;
+        margin:  auto;
+        margin-top: 5rem;
+    }
+
+    .cuadro_imagen_finanzas{
+        @include alto-ancho(null,50%);
+        width: 50%;
+        margin-left: 0;
+    }
+
+
+    .imagen_finanzas{
+        margin:  auto;
+        filter: sepia(50%);
+        @include alto-ancho(100%,100%);
+        max-width: 600px;
+        min-width: 400px;
+        max-height: 400px;
+        @include flex (flex,center,null,null);
+        margin-left: 0;
+    }
+
+    .contenedor_texto_banner{
+        @include alto-ancho(null,33%);
+        width: 33%;
+        @include flex (flex,null,null,null);
+        margin-right: 2rem;
+
+    }
+    .texto_banner_finanzas{  
+        color: $color-base2;
+        text-justify:center;
+        font-family: 'Mooli', sans-serif;
+        font-size: 2rem;
+        margin: 0 auto;
+        @include flex (flex,null,null,null);
+        text-align: center;
+        @include alto-ancho(null, 100%); 
+        }
+
+
+    .contenedor_finanzas{
+        @include flex(flex,center,center, 10rem);
+        @include alto-ancho(100%,100%);
+        max-width: $ancho-max;
+        max-height: 1000px;  
+        margin:  auto;  
+        margin-top: 10%;
+        margin-bottom: 10%;
+    }
+}
+
+
+
+.parrafo_finanzas{
+    border: 2px solid $color-base3 ;
+    background-color: $color-base5;
+    width: 30rem;
+    max-width: $ancho-max;
+    height: 200px;
+    font-size: 2.1rem;
+    font-family: 'Mooli', sans-serif;
+    text-align: center;
+    @include flex(flex, null, center, null);
+    color:$color-base2;
+    padding: 5% 5% 5% 5% ;
+    margin: 0 auto;
+}
+
+.parrafo_finanzas:hover{
+    color:$color-encabezado;
+
+}

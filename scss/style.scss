@@ -1,0 +1,34 @@
+@import "utiles/variables";
+@import "utiles/mixins";
+
+
+@import "base/tipografia";
+
+
+@import "componentes/botones";
+
+@import "base/reset";
+
+//componentes
+
+@import"componentes/titulo";
+@import"componentes/tarjetas";
+@import "componentes/formulario_elementos";
+@import"componentes/botones";
+
+// estructura
+@import "layout/cuerpo";
+
+@import "layout/encabezado";
+@import "layout/pie_pagina";
+
+
+// paginas
+
+@import "vistas/home";
+
+@import "vistas/cotizar_auto";
+
+@import "vistas/formulario";
+
+@import"vistas/finanzas";

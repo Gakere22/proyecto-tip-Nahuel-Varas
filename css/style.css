@@ -1,0 +1,816 @@
+@charset "UTF-8";
+/* fuentes */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Mooli&display=swap");
+.btn {
+  border: 1px solid #786b5e;
+  font-size: 2rem;
+  width: 100%;
+}
+
+.boton {
+  background-color: #786b5e;
+}
+
+.boton:hover {
+  background-color: #c6a664;
+  border: 1px solid #786b5e;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.logo {
+  filter: sepia(80%);
+}
+
+@media screen and (max-width: 578px) {
+  .titulo {
+    font-family: "Mooli", sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    margin: auto;
+    margin-top: 2rem;
+    max-width: 580px;
+  }
+}
+@media screen and (min-width: 579px) {
+  .titulo {
+    font-family: "Mooli", sans-serif;
+    font-size: 3.5rem;
+    text-align: center;
+    margin: auto;
+    margin-top: 5%;
+    max-width: 1200px;
+  }
+}
+@media screen and (max-width: 578px) {
+  .titulo1 {
+    font-family: "Mooli", sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    margin: auto;
+    margin-top: 3.5rem;
+    max-width: 580px;
+  }
+}
+@media screen and (min-width: 579px) {
+  .titulo1 {
+    font-family: "Mooli", sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    margin: auto;
+    margin-top: 10%;
+    max-width: 1200px;
+  }
+}
+.card1 {
+  border-color: beige;
+  background-color: beige;
+  border-radius: 20%;
+}
+
+.card-body {
+  background-color: #786b5e;
+  width: 18rem;
+  height: 18rem;
+  transition: background-color 1s ease-in-out;
+}
+
+.card-body:hover {
+  background-color: #c6a664;
+  border-style: inset;
+  border-color: grey;
+}
+
+.nombre_tarjeta {
+  font-size: 3.5rem;
+  color: beige;
+  margin-top: 7%;
+}
+
+.card-text {
+  font-size: 1.5rem;
+  color: beige;
+}
+
+.card-text1 {
+  font-size: 2rem;
+  margin-top: 10%;
+  color: beige;
+}
+
+.contenedor-formulario-cotizar {
+  margin-top: 5%;
+  margin-bottom: 10%;
+}
+
+.formulario {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* campos formulario*/
+.campos-formularios {
+  size: 100px;
+}
+
+.form-floating {
+  height: 4rem;
+}
+
+/* define la fuente de los label de los formularios*/
+.label-formularios {
+  font-size: 1.5rem;
+  font-family: "Mooli", sans-serif;
+}
+
+.floatingInput {
+  height: 2rem;
+}
+
+/* separa los campos de los formularios*/
+.row-sm {
+  margin-top: 1rem;
+}
+
+.fila {
+  margin-bottom: 2.5rem;
+}
+
+/* aumenta el tamaño de la fila de el campo
+ consulta de los formulario*/
+.row-campo-consulta {
+  height: 12rem;
+}
+
+.campo {
+  background-color: #c0b8a2;
+}
+
+.nombre_campos {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+}
+
+.btn {
+  border: 1px solid #786b5e;
+  font-size: 2rem;
+  width: 100%;
+}
+
+.boton {
+  background-color: #786b5e;
+}
+
+.boton:hover {
+  background-color: #c6a664;
+  border: 1px solid #786b5e;
+}
+
+.cuerpo {
+  background-color: #ece2c6;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/*
+@media only screen and (max-width: 768px){
+.cuerpo{
+    background-color: $color-base;
+    width: 100%;
+    max-width: $ancho-max;
+    margin: auto;
+}
+
+}
+
+
+@media only screen and (min-width: 769px){
+    .cuerpo{
+        background-color: $color-base;
+        width: 100%;
+        max-width: $ancho-max;
+        margin: auto;
+    }
+
+}
+*/
+.encabezado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  background-color: #c6a664;
+  gap: 0.5rem 50rem;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+@media only screen and (max-width: 768px) {
+  .carousel {
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 7rem;
+  }
+}
+@media only screen and (min-width: 769px) {
+  .carousel {
+    max-width: 1200px;
+    margin: auto;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .navbar {
+    max-width: 1200px;
+    margin: auto;
+  }
+  .logo {
+    filter: sepia(80%);
+    width: 70%;
+    height: 70%;
+  }
+  .container-fluid {
+    background-color: #c6a664;
+  }
+  .navbar-toggler:hover {
+    border: 2px solid beige;
+  }
+  .navbar-toggler:focus { /*anulo el focus que aplica boostrap sobre el borde del boton menu cuando se agrupa*/
+    color: beige;
+  }
+  .offcanvas-end {
+    background-color: beige;
+  }
+  .nav-link {
+    margin-left: 20px;
+    text-align: right;
+    transition: all 1s ease-in-out; /* convierte puntero en mano*/
+    font-family: "Mooli", sans-serif;
+    font-size: 1.5rem;
+  }
+  .nav-link:hover { /* para darle estilo al link cuando se le pasa por arriba con el puntero*/
+    border-bottom: 2px solid #786b5e;
+    color: beige;
+  }
+  ul {
+    list-style-type: none;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}
+@media only screen and (min-width: 767px) {
+  .navbar {
+    max-width: 1200px;
+    margin: auto;
+  }
+  .container-fluid {
+    background-color: #c6a664;
+  }
+  .navbar-toggler:hover {
+    border: 2px solid beige;
+  }
+  .navbar-toggler:focus { /*anulo el focus que aplica boostrap sobre el borde del boton menu cuando se agrupa*/
+    color: beige;
+  }
+  .offcanvas-end {
+    background-color: beige;
+  }
+  .nav-link {
+    margin-left: 20px;
+    text-align: right;
+    transition: all 1s ease-in-out; /* convierte puntero en mano*/
+    font-family: "Mooli", sans-serif;
+    font-size: 1.5rem;
+  }
+  .nav-link:hover { /* para darle estilo al link cuando se le pasa por arriba con el puntero*/
+    border-bottom: 2px solid #786b5e;
+    color: beige;
+  }
+  ul {
+    list-style-type: none;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}
+.pie_pagina {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  border-top: 6px solid whitesmoke;
+  gap: 50%;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+.pie_pagina-mapa {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.pie_pagina-redes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.pie_pagina-redes-instagram, .pie_pagina-redes-facebook, .pie_pagina-redes-whatsapp {
+  border-radius: 12px;
+  width: 4rem;
+  height: 4rem;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+.pie_pagina-redes-instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+.pie_pagina-redes-facebook {
+  background-color: rgb(37, 37, 157);
+}
+.pie_pagina-redes-whatsapp {
+  background-color: #00bb2d;
+}
+.pie_pagina-redes-instagram-item, .pie_pagina-redes-facebook-item, .pie_pagina-redes-whatsapp-item {
+  font-size: 2.8rem;
+  color: white;
+  position: relative;
+  bottom: 3%;
+}
+
+@media screen and (max-width: 578px) {
+  .titulo {
+    margin: auto;
+  }
+  .parrafo {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5rem;
+    margin: auto;
+    text-align: center;
+    margin-top: 1.5%;
+  }
+}
+@media screen and (min-width: 579px) {
+  .titulo {
+    margin: 0, auto;
+  }
+  .parrafo {
+    font-family: "Montserrat", sans-serif;
+    font-size: 2.5rem;
+    margin: auto;
+    text-align: center;
+    max-width: 1200px;
+    margin-top: 5%;
+  }
+}
+@media only screen and (max-width: 668px) {
+  .contenedor-home-ubicacion {
+    margin: auto;
+    margin-top: 3rem;
+  }
+}
+.parrafo_banner_home {
+  display: flex;
+  justify-content: center;
+  font-family: "Mooli", sans-serif;
+  font-size: 5rem;
+  font-weight: 300;
+  width: 100%;
+  height: 350px;
+  text-align: center;
+  color: beige;
+  margin-top: 10%;
+}
+
+@media only screen and (max-width: 668px) {
+  .contenedor-home {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: auto;
+    max-width: 1200px;
+  }
+}
+@media only screen and (min-width: 669px) {
+  .contenedor-home {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20rem;
+    margin: 5% auto;
+    max-width: 1200px;
+  }
+}
+@media only screen and (max-width: 668px) {
+  .contenedor-home-caja {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5% auto;
+    width: 100%;
+  }
+}
+.contenedor_seguros {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  gap: 1rem 10rem;
+  margin-bottom: 2rem;
+  margin-top: 5%;
+}
+
+.boton_seguros {
+  background-color: #786b5e;
+  width: 11rem;
+  height: 10rem;
+  font-size: 2rem;
+  border: none;
+  border-style: outset;
+  font-family: "Montserrat", sans-serif;
+  color: beige;
+}
+
+.ubicacion {
+  margin-bottom: 10%;
+}
+
+@media only screen and (max-width: 768px) {
+  .banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2px;
+    width: 100%;
+    height: 100%;
+    background-color: #786b5e;
+    margin: auto;
+    margin-top: 7rem;
+  }
+  .cuadro_imagen {
+    width: 100%;
+    margin-left: 0;
+  }
+  .imagen_banner_cotizar {
+    margin: auto;
+    filter: sepia(50%);
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    min-width: 400px;
+    max-height: 100%;
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+  }
+  .texto_banner {
+    color: beige;
+    text-justify: center;
+    font-family: "Mooli", sans-serif;
+    font-size: 0;
+    margin: 0 auto;
+    display: flex;
+    text-align: center;
+    width: 100%;
+  }
+}
+@media only screen and ((min-width: 769px) and (max-width: 1176px)) {
+  .encabezado {
+    max-width: 1176px;
+  }
+  .banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2px 18rem;
+    width: 100%;
+    height: 100%;
+    background-color: #786b5e;
+    max-width: 1176px;
+    margin: auto;
+    margin-top: 5rem;
+  }
+  .cuadro_imagen {
+    width: 100%;
+    margin-left: 0;
+  }
+  .imagen_banner_cotizar {
+    margin: auto;
+    filter: sepia(50%);
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    min-width: 400px;
+    max-height: 100%;
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+  }
+  .texto_banner {
+    color: beige;
+    text-justify: center;
+    font-family: "Mooli", sans-serif;
+    font-size: 0;
+    margin: 0 auto;
+    display: flex;
+    text-align: center;
+    width: 100%;
+  }
+}
+@media only screen and ((min-width: 1177px)) {
+  .banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2px 18rem;
+    width: 100%;
+    height: 100%;
+    background-color: #786b5e;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 5rem;
+  }
+  .cuadro_imagen {
+    width: 49%;
+    margin-left: 0;
+  }
+  .imagen_banner_cotizar {
+    margin: auto;
+    filter: sepia(50%);
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    min-width: 400px;
+    max-height: 100%;
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+  }
+  .cuadro_texto_cotizar {
+    width: 34%;
+    display: flex;
+    margin-right: 2rem;
+  }
+  .texto_banner {
+    color: beige;
+    text-justify: center;
+    font-family: "Mooli", sans-serif;
+    font-size: 2rem;
+    margin: 0 auto;
+    display: flex;
+    text-align: center;
+    width: 100%;
+  }
+}
+.formulario {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.titulo_cotizar {
+  display: flex;
+  justify-content: center;
+  font-family: "Mooli", sans-serif;
+}
+
+.contenedor-titulo {
+  margin: auto;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.contenedor-formulario-cotizar {
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 3rem;
+}
+
+.frase-imagen {
+  font-size: 3rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .banner_finanzas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2px 18rem;
+    width: 100%;
+    height: 100%;
+    background-color: #414c3b;
+    margin: auto;
+    margin-top: 7rem;
+  }
+  .cuadro_imagen_finanzas {
+    width: 100%;
+    margin-left: 0;
+  }
+  .imagen_finanzas {
+    margin: auto;
+    filter: sepia(50%);
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    min-width: 400px;
+    max-height: 100%;
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+  }
+  .texto_banner_finanzas {
+    color: beige;
+    text-justify: center;
+    font-family: "Mooli", sans-serif;
+    font-size: 0;
+    margin: 0 auto;
+    display: flex;
+    gap: nnull;
+    text-align: center;
+    width: 100%;
+  }
+  .contenedor_finanzas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2px 10rem;
+    width: 100%;
+    height: 100%;
+    max-width: 1200px;
+    max-height: 1000px;
+    margin: auto;
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
+  .contenedor_finanzas-ubicacion_finanzas {
+    margin-bottom: 2rem;
+  }
+}
+@media only screen and (min-width: 769px) and (max-width: 1176px) {
+  .banner_finanzas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2px 18rem;
+    width: 100%;
+    height: 100%;
+    background-color: #414c3b;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 5rem;
+  }
+  .cuadro_imagen_finanzas {
+    width: 100%;
+    margin-left: 0;
+  }
+  .imagen_finanzas {
+    margin: auto;
+    filter: sepia(50%);
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    min-width: 400px;
+    max-height: 100%;
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+  }
+  .texto_banner_finanzas {
+    color: beige;
+    text-justify: center;
+    font-family: "Mooli", sans-serif;
+    font-size: 0;
+    margin: 0 auto;
+    display: flex;
+    text-align: center;
+    width: 100%;
+  }
+  .contenedor_finanzas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2px 10rem;
+    width: 100%;
+    height: 100%;
+    max-width: 1200px;
+    max-height: 1000px;
+    margin: auto;
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
+  .contenedor_finanzas-ubicacion_finanzas {
+    margin-bottom: 2rem;
+  }
+}
+@media only screen and (min-width: 1177px) {
+  .banner_finanzas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2px 18rem;
+    width: 100%;
+    height: 100%;
+    background-color: #414c3b;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 5rem;
+  }
+  .cuadro_imagen_finanzas {
+    width: 50%;
+    width: 50%;
+    margin-left: 0;
+  }
+  .imagen_finanzas {
+    margin: auto;
+    filter: sepia(50%);
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    min-width: 400px;
+    max-height: 400px;
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+  }
+  .contenedor_texto_banner {
+    width: 33%;
+    width: 33%;
+    display: flex;
+    margin-right: 2rem;
+  }
+  .texto_banner_finanzas {
+    color: beige;
+    text-justify: center;
+    font-family: "Mooli", sans-serif;
+    font-size: 2rem;
+    margin: 0 auto;
+    display: flex;
+    text-align: center;
+    width: 100%;
+  }
+  .contenedor_finanzas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+    width: 100%;
+    height: 100%;
+    max-width: 1200px;
+    max-height: 1000px;
+    margin: auto;
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
+}
+.parrafo_finanzas {
+  border: 2px solid #786b5e;
+  background-color: #414c3b;
+  width: 30rem;
+  max-width: 1200px;
+  height: 200px;
+  font-size: 2.1rem;
+  font-family: "Mooli", sans-serif;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  color: beige;
+  padding: 5% 5% 5% 5%;
+  margin: 0 auto;
+}
+
+.parrafo_finanzas:hover {
+  color: #c6a664;
+}
+
+/*# sourceMappingURL=style.css.map */

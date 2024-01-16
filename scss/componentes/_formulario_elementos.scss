@@ -1,0 +1,61 @@
+.contenedor-formulario-cotizar{
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+
+.formulario{
+    max-width: $ancho-max2;
+    margin: auto;
+    
+}
+
+/* campos formulario*/
+
+.campos-formularios{
+     size:  100px;
+}
+
+
+
+
+.form-floating{
+    height: 4rem;
+}
+
+
+/* define la fuente de los label de los formularios*/
+.label-formularios{
+    font-size: $fuente-size-ms;
+    font-family: 'Mooli', sans-serif;
+}
+
+
+.floatingInput{
+ height: 2rem;
+}
+
+/* separa los campos de los formularios*/
+.row-sm{
+    margin-top: 1rem;
+}
+
+.fila{
+    margin-bottom: 2.5rem;
+}
+
+
+/* aumenta el tamaño de la fila de el campo
+ consulta de los formulario*/
+.row-campo-consulta{
+    height: 12rem;
+}
+
+
+.campo{
+    background-color: $color-base4 ;
+}    
+
+.nombre_campos{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+}

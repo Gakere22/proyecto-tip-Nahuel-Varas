@@ -1,0 +1,29 @@
+ 
+ .cuerpo{
+    background-color: $color-base;
+    width: 100%;
+    max-width: $ancho-max;
+    margin: auto;
+}
+ /*
+@media only screen and (max-width: 768px){
+.cuerpo{
+    background-color: $color-base;
+    width: 100%;
+    max-width: $ancho-max;
+    margin: auto;
+}
+
+}
+
+
+@media only screen and (min-width: 769px){
+    .cuerpo{
+        background-color: $color-base;
+        width: 100%;
+        max-width: $ancho-max;
+        margin: auto;
+    }
+
+}
+*/
