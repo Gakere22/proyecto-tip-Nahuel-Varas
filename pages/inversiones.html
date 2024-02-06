@@ -7,7 +7,7 @@
     <meta name="description" content="tip Inversiones, elegí tu inversión y proyecta tus beneficios">
     <title>tip-Inversiones</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="cuerpo" >
     <header class="encabezado">        
@@ -41,57 +41,103 @@
     <section>
         <h1 class="titulo1">
             "Bienvenido planifica tu retiro. Definir a que edad quisieras retirarte, determina el monto que quisiersas tener acumulado, defini tu perfil de riesgo.
-             Con esta informacion se determinara el valor mensual que deberias aporter para lograr tu objetivo".
+             Con esta informacion se determinara el valor mensual que deberias aporter para lograr tu objetivo. Los Perfiles de Riesgo son; Alto , Moderado, Bajo, utilice montos con mas de 10 cifras".
         </h1>
     </section>
-
     <main> 
-        <section class= "contenedor-formulario-cotizar">
-            <form action="" class="formulario">
-                <div class="row fila">  
-                    <div class= "col-lg-6 col-md-6 col-sm-l2" class="formulario-item">
-                        <div class="form-floating " class="campos-formularios">
-                            <input type="text" class="form-control" id="floatingInput" style="height: 5rem" placeholder="Nombre" >
-                            <label class="label-formularios" for="floatingInput">Monto</label>
+        <section class= "contenedor-formulario-cotizar" >
+            <div >
+                <form  id = "invCamposForm" action=""  class="formulario" >
+                    <div class="row fila">  
+                        <div class= "col-lg-6 col-md-6 col-sm-l2" class="formulario-item">
+                            <div class="form-floating " class="campos-formularios">
+                                <input id="invMonto" type="text" class="form-control" id="floatingInput" style="height: 5rem" placeholder="Nombre" >
+                                <label class="label-formularios" for="floatingInput">Monto</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-l2" class="formulario-item" >
-                        <div class="form-floating " >
-                            <input type="text" class="form-control" id="floatingInput" style="height: 5rem" placeholder="Apellido" >
-                            <label class="label-formularios" for="floatingInput">Cuota</label>
+                        <div class="col-lg-6 col-md-6 col-sm-l2" class="formulario-item"> 
+                            <div class="form-floating " class="campos-formularios">
+                                <input id="invPerfil" type="text" class="form-control" id="floatingInput" style="height: 5rem" placeholder="Direccion">
+                                <label class="label-formularios" for="floatingInput">Perfil</label>
+                            </div>
                         </div>
                     </div> 
-                </div> 
-                <div class="row fila">
-                    <div class="col-lg-6 col-md-6 col-sm-l2" class="formulario-item">  
-                        <div class="form-floating ">
-                            <input type="text" class="form-control" id="floatingInput" style="height: 5rem" placeholder="Toggle" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}">
-                            <label class="label-formularios" for="floatingInput">Edad actual</label>
+                    <div class="row fila" >
+                        <div class="col-lg-6 col-md-6 col-sm-l2" class="formulario-item">  
+                            <div class="form-floating ">
+                                <input id="invEdadActual" type="text" class="form-control" id="floatingInput" style="height: 5rem" placeholder="Toggle" >
+                                <label class="label-formularios" for="floatingInput">Edad actual</label>
+                            </div>
+                        </div>    
+                        <div class="col-lg-6 col-md-6 col-sm-l2" class="formulario-item">
+                            <div class="form-floating ">
+                                <input id="invEdadRetiro" type="text" class="form-control" id="floatingInput" style="height: 5rem" placeholder="name@example.com">
+                                <label class="label-formularios" for="floatingInput">Edad retiro</label>
+                            </div> 
                         </div>
                     </div>    
-                    <div class="col-lg-6 col-md-6 col-sm-l2" class="formulario-item">
-                        <div class="form-floating ">
-                            <input type="text" class="form-control" id="floatingInput" style="height: 5rem" placeholder="name@example.com">
-                            <label class="label-formularios" for="floatingInput">Edad retiro</label>
+                    <div class="row fila" >
+                        <div class= "col-lg-6 col-md-6 col-sm-l2" class="formulario-item">
+                            <div class="form-floating " class="campos-formularios">
+                                <input id="invNombre" type="text" class="form-control" id="floatingInput" style="height: 5rem" placeholder="Nombre" >
+                                <label class="label-formularios" for="floatingInput">Nombre</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-l2" class="formulario-item"> 
+                            <div class="form-floating "class="campos-formularios"> 
+                                <input id="invApellido" type="text" class="form-control" id="floatingInput" style="height: 5rem" placeholder="Direccion">
+                                <label class="label-formularios" for="floatingInput">Apellido</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row fila" >
+                        <div class="col-lg-6 col-md-6 col-sm-l2" class="formulario-item">  
+                            <div class="form-floating " class="campos-formularios">
+                                <input id="invTelefono" type="tel" class="form-control" id="floatingInput" style="height: 5rem" placeholder="Toggle" >
+                                <label class="label-formularios" for="floatingInput">Telefono</label>
+                            </div>
+                        </div>    
+                        <div class="col-lg-6 col-md-6 col-sm-l2" class="formulario-item">
+                            <div class="form-floating" class="campos-formularios">
+                                <input id="invMail" type="email" class="form-control" id="floatingInput" style="height: 5rem" placeholder="name@example.com">
+                                <label class="label-formularios" for="floatingInput">Mail</label>
+                            </div> 
+                        </div>
+                    </div>    
+                    <div class="row fila">
+                        <div class="col-lg-3 col-md-3 col-sm-0"> </div>
+                        <div class="col-lg-6 col-md-6 col-sm-l2" class="formulario-item">  
+                            <div class="form-floating " class="campos-formularios">
+                                <input id="invTarjeta" type="number" class="form-control" id="floatingInput" style="height: 5rem" placeholder="Toggle">
+                                <label class="label-formularios" for="floatingInput">Numero de Tarjeta</label>
+                            </div>
+                        </div>    
+                    </div>
+                    <div>      
+                </form>
+            </div>
+             <div>   
+                <div   action=""  class="formulario">
+                    <div class="row fila">    
+                        <div class="col-lg-6 col-md-6 col-sm-0"> </div>
+                        <div class="col-lg-2 col-md-2 col-sm-12" class="formulario-item" class="formulario-consulta" class="boton-enviar-formularios">
+                            <div class ="filaInv" class="form-floating " class="campos-formularios" class="campos-formularios-botones">
+                                <button id="invCalcular" class="btn btn-primary btn-lg boton"  type="button">Calcular</button>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-12" class="formulario-item" class="formulario-consulta" class="boton-enviar-formularios">
+                            <div  class="form-floating " class="campos-formularios" class="campos-formularios-botones">
+                                <button id ="invConfirmar" class="btn btn-primary btn-lg boton"  type="button"> Confirmar </button>
+                            </div>
+                        </div> 
+                        <div class="col-lg-2 col-md-2 col-sm-12" class="formulario-item" class="formulario-consulta" class="boton-enviar-formularios">
+                            <div  class="form-floating " class="campos-formularios" class="campos-formularios-botones">
+                                <button  id="invCancelar"  class="btn btn-primary btn-lg boton"  type="button"> Cancelar </button>
+                            </div>
                         </div> 
                     </div>
-                </div>    
-                <div class="row fila" class="formulario-item"> 
-                    <div class="form-floating ">
-                        <input type="text" class="form-control" id="floatingInput" style="height: 5rem" placeholder="Direccion">
-                        <label class="label-formularios" for="floatingInput">Perfil</label>
-                    </div>
-                </div>  
-                
-                <div class="row fila">    
-                    <div class="col-lg-10 col-md-10 col-sm-0"> </div>
-                    <div class="col-lg-2 col-md-2 col-sm-12" class="formulario-item" class="formulario-consulta" class="boton-enviar-formularios">
-                        <div  class="form-floating ">
-                            <button  class="btn btn-primary btn-lg boton"  type="submit">Calcular</button>
-                        </div>
-                    </div> 
                 </div>
-            </form>
+            </div>
         </section>
     </main>
     <footer class="pie_pagina">
