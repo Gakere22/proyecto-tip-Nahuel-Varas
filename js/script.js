@@ -1,223 +1,189 @@
-//import { clientes } from "./bdClientes";
+//credencial api AIzaSyC54deZPxGHOESXOPiXhXoiuwP92CxwiwM
+// id cliente 1069233791926-nhsgu033aqos8gli854qggvd128b4sfi.apps.googleusercontent.com
 
-//----------------------------------
-// variables
-//array de clientes
+console.log("se crea el objeto")
+class Producto{
+    id = 0; //_ es para que este protegida en la herencia se puede ver
+    nombre = "ninguno";
+    precio = 0;
+    stock = 0;
+    total = this.precio * this.stock;
+    contenedorProdDatos = document.createElement("div"); 
+    estadoActualizado = 0;
+    estadoBd = 0;
+    indice = null;
 
-class Persona {
-    #nombre;
-    #apellido;
-    #telefono;
-    #mail;
-    #tarjeta;
-    #edadActual;
-    #edadRetiro;
-    #montoObjetivo;
-    #perfil;
-    
-    
-    constructor(nombre, apellido, telefono, mail, tarjeta, edadActual, edadRetiro, montoObjetivo, perfil){
-        this.#nombre = nombre.toUpperCase();
-        this.#apellido = apellido.toUpperCase();
-        this.#telefono = telefono;
-        this.#mail = mail;
-        this.#tarjeta = tarjeta;
-        this.#edadActual = parseInt(edadActual);
-        this.#edadRetiro = parseInt(edadRetiro);
-        this.#montoObjetivo = parseFloat(montoObjetivo);
-        this.#perfil = perfil.toUpperCase();
-       
+    constructor(id,nombre,precio,cantidad,actualizar, estadoBd){
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = parseFloat(precio);
+        this.stock = parseInt(cantidad);
+        this.estadoActualizado = parseInt(actualizar);
+        this.estadoBd = parseInt(estadoBd);
+        
     }
 
-
-
+    get mostrarId(){
+        return this.id;
+    }
     get mostrarNombre(){
-        return   this.#nombre;
+        return this.nombre;
     }
-    get mostrarApellido(){
-        return this.#apellido;
+    get mostrarPrecio(){
+        return this.precio;
     }
-
-    get mostrarCuota(){
-        return this.#calcularCuota();
+    get mostrarStock(){
+        return this.stock;
     }
-
-    
-
-    get mostrarPerfilRiesgo(){
-        return this.#perfil;
+    get calculaValorStock(){
+        return this.precio * this.stock;
     }
 
-    get mostrarMontoObjetivo (){
-        return this.#montoObjetivo;
+    get mostrarEstadoPub(){
+        return this.estadoPub;
+    }
+    get mostrarEstadoAct(){
+        return this.estadoActualizado;
+    }
+    get mostrarEstadoBd(){
+        return this.estadoBd;
     }
 
-    set modificarMontoObjetivo (monto){
-        this.#montoObjetivo = parseFloat(monto);
-    }
-
-    set modificarApellido(apellido){
-        this.#apellido = apellido.toUpperCase();
-    }
-
-    set modificarNombre(nombre){
-        this.#nombre = nombre.toUpperCase();
-    }
-
-    set modificarTelefono(telefono){
-        this.#telefono = telefono;
-    }
-    
-    set modificarMail(mail){
-        this.#mail = mail;
-    }
-    
-    set modificarTarjeta(tarjeta){
-        this.#tarjeta = tarjeta;
-    }
-    
-    set modificarEdadAct(eA){
-        this.#edadActual = parseInt(edadActual);
-    }
-    
-    set modificarEdadRet(eR){
-        this.#edadRetiro = parseInt(eR);
-    }
-    
-    set modificarEdadAct(eA){
-        this.#montoObjetivo = parseFloat(montoObjetivo);
-    }
-    
-    set modificarPerfil(per){
-        this.#perfil = per.toUpperCase();
-    }
-
-
-    #calcularCuota (){
-      //  console.log("ingrese a calcular cuota");
-        let n = this.#calcularPlazo();
-     //   console.log("ingrese a calcular tiempo  "+ n);
-        let t =  this.#calcularTasa();
-   //     console.log("ingrese a calcular tasa " + t );
-        return ((this.#montoObjetivo/((((1 + t)**n)-1)/t)));
-    }
-
-    #calcularPlazo(){
-        return  ((this.#edadRetiro - this.#edadActual)*12);
-        
-    }
-
-    #calcularTasa() {
-        let tasa = 0;
-        switch(this.#perfil){
-            case "ALTO":
-                tasa = parseFloat(((1 + 0.75)**(1/12))-1);  
-                break;
-            case "MODERADO":
-                tasa = parseFloat(((1+0.5)**(1/12))-1);
-            break;
-            case "BAJO":
-                tasa = parseFloat(((1+0.25)**(1/12))-1);
-            break;
-
+    modificarStock(cantidad){
+        this.stock = cantidad;
+        if(this.stock == 0){
+            this.estadoBd = 0;
+        }else{
+            this.estadoBd = 1;
         }
-        return tasa;
-
     }
 
-    mostrarPersona(){
-        toString("nombre: " + this.#nombre + "," + "apellido: " + this.#apellido + ", " + "telefono: " + this.#telefono + ", " + "mail: " + this.#mail + ", " + " dado sus objetivos su cuota es: "+ this.cuota);
+    modificarPrecio(precio){
+        this.precio = precio;
+        if (this.precio == 0 ){
+            this.estadoBd = 0;
+        } else{
+            this.estadoBd = 1;
+        }
+    }
+    
+    actualizarEstadoAct(estado){
+        this.estadoActualizado = parseInt(estado);
     }
 
-}
-
-
-function limpiarFomInv(){
-    console.log("ingrese a limpiar form");
-    contenedorDatos.remove();
-    camposFormInv.style.display = "block";
-    terminar = true;
-    return true;
-}
-
-
-function cargarCliente(){
-
-    console.log("ingreso a cargar cliente");
-
-    contenedorDatos.remove();
-    clientes.push(persona);
-    
-    let contDatos = document.createElement("div");
-    contDatos.setAttribute("class", "titulo");
-    contDatos.innerHTML =   
-     `   <p class= "titulo"> ${persona.mostrarNombre} se ha dado de alta con exito, gracias por contratar nuestro servicio </p>
-    `
-    console.log("mostrar mensaje al cliente");
-
-    camposFormInv.insertAdjacentElement("beforebegin", contDatos);
-    
-    setTimeout(function(){
-        camposFormInv.style.display = "block";    
-        contDatos.remove();
-    }, 5000);
-
-
-    for (i = 0; i < clientes.length; i++){
-        clientes[i].mostrarNombre;
+    actualizarEstadoPub(estado){
+        this.estadoPub = parseInt(estado);
     }
 
-    return true;
-}
+    asignarEstilo(){
 
-
-
-function mostrarInfo(pers){
-    
-  //  botonCancelar.addEventListener("clicl", limpiar);
-   
-    contenedorDatos.setAttribute("class", "titulo");
-    contenedorDatos.innerHTML =   
-     `      <h3> En base a los datos ingresado le inforamos el valor de la cuota a pagar </h3> 
-            <h2 >  ${pers.mostrarNombre} </h2>
-            <h2 >  ${pers.mostrarApellido} </h2>
-           <h2> cuota: $ ${parseInt(pers.mostrarCuota)} </h2>
-           <h3> ¿Confirme si desea  contratar el servicio, cancele en caso contrasio? <h3/>         
-            `
-    camposFormInv.style.display = "none";
-    
-    camposFormInv.insertAdjacentElement("beforebegin", contenedorDatos);
-    
-    console.log("salgo de mostrar datos persna");
-    return true;
+        this.contenedorProdDatos.setAttribute("class","estiloProducto");
         
+        return true;
+    }
+
+    armarHtml(){
+        this.contenedorProdDatos.innerHTML= `
+            <h4> producto: ${this.nombre}  </h4>
+            <h4> precio: ${this.precio}  </h4>
+            <h4> unidades disponibles: ${this.stock}  </h4>
+            ` 
+        return true;
+    }
+
+    asignarEvento(){
+        this.contenedorProdDatos.addEventListener("click",()=> this.formulario());
+        return true;
+    }
+
+    formulario(){
+        
+            let contFormulario = document.getElementById("formularioPro");
+            contFormulario.style.visibility = "visible";
+            alert("precio" + productos[this.indice].precio + " y stock:" + productos[this.indice].stock);
+            console.log("ingresa a formulario");    
+            let pre = document.getElementById("editaProPrecio");
+            pre.value = "0.0";
+            let sto = document.getElementById("editaProStock");
+            sto.value = "00";
+            contador = this.indice; 
+            botonModificar.addEventListener("click", () => capturarDatos(this.indice));
+            return true;
+        
+    }
+  
+
+    publicar(index){
+        this.indice = index;
+        if(this.asignarEstilo()){
+            if(this.armarHtml()){
+                if(this.asignarEvento(index)){
+                    return this.contenedorProdDatos;    
+                }else{
+                    console.warn("se genero un error en gener evento");    
+                }      
+            }else{
+                console.warn("se genero un erro en el html");
+            }    
+        }else{
+            console.warn("se genero un error en el estilo");
+        }
+            
+    }
+
+}    
+
+ //creo el contenedor de producto y le doy estilo css con la clase
+ let contenedorProd = document.getElementById("productos");
+ contenedorProd.setAttribute("class", "estiloContenedorProductos");
+ //creo el contenedor de un prodcuto y le doy estilo con la clase
+
+let controlPublicar = false;
+let prodPublicados = []; 
+let bajarProducto = [];
+let botonModificar = document.getElementById("botonModificarPro");
+
+
+function publicar(prod,i){
+
+        if((prod.estadoBd == 1)){ 
+            console.log("este es el precio antes de publicar "+ prod.precio)
+            contenedorProd.append(prod.publicar(i));
+
+        }else{
+            console.log("entro al else de publicar");
+           // prod.contenedorProdDatos.remove();
+        }
+      //recooro el array objeto productos(variable global)
+    
+        
+        //prodPubliElemento.push(producto);
+    
 }
 
-//Capturar datoasde persona ---------------------
 
-function capturarFormInv (){
-    nombre= document.getElementById("invNombre").value;
-    apellido= document.getElementById("invApellido").value;
-    telefono= document.getElementById("invTelefono").value;
-    mail= document.getElementById("invMail").value;
-    tarjeta=  document.getElementById("invTarjeta").value;
-    montoObjetivo = document.getElementById("invMonto").value;
-    perfil = (document.getElementById("invPerfil").value).toUpperCase();
-    edadActual = document.getElementById("invEdadActual").value;
-    edadRetiro = document.getElementById("invEdadRetiro").value;   
-   
-    persona.modificarMontoObjetivo = montoObjetivo;  
-    persona.modificarApellido = apellido;
-    persona.modificarNombre = nombre;
-    persona.modificarMail = mail;
-    persona.modificarTelefono = telefono;
-    persona.modificarEdadAct = edadActual;
-    persona.modificarEdadRet = edadRetiro;
-    persona.modificarPerfil = perfil;
 
-   
-    return  mostrarInfo(persona);
 
+function cargarProductos(){  
+    console.log("entro a cargar producots");  
+    prodPublicados = productos;
+    productos.forEach((pro,i) => publicar(pro,i));
+    
+}
+
+
+
+
+function validarNumero(cadena){
+    let validar = true;
+    let i = 0;
+    while((i < cadena.length)&&(validar)){
+       if(((cadena[i] > 47)&&( cadena[i] < 58)) || (cadena[i] == 44)){
+        validar = false;
+       }
+       i++;
+    }
+    return validar;
 }
 
 
@@ -225,185 +191,79 @@ function capturarFormInv (){
 
 
 
-//--------------------------------------------------------
-// FUNCIONES
+ function capturarDatos(i){
+    let validar = false;
+    if( contador == i) {
+        console.log("ingresa a capturar datos")
+        let contFormulario = document.getElementById("formularioPro");
+        console.log("viejo precio " + productos [i].precio);
+        console.log("viejo stock " + productos [i]. stock);
+        let pre = document.getElementById("editaProPrecio");
+        console.log ("valor del contenido de campo precio "+ pre.value);
+        let valor = null;
+        if ((pre.value != "0.0" )){
+            if(validarNumero(pre.value)){
+                valor = parseFloat(pre.value); 
+                if(valor >= 0){
+                    productos [i].precio = parseFloat(valor);
+                    validar = true;
+                }else{
+                    alert("el valor del campo cantidad debe ser mayor igual a 0");
+                    return true;
+                       
+                }
+            }
+        
+        }
+
+        let sto = document.getElementById("editaProStock");
+        console.log ( sto.value);
+        if ((sto.value != "00" ) ){
+            if (validarNumero(sto.value)){
+                valor = parseInt(sto.value);
+                if (valor >= 0){
+                    productos [i].modificarStock(parseInt(valor));
+                    validar = true;
+                }else{
+                    alert("el valor del campo cantidad debe ser mayor igual a 0");  
+                     return true;
+                }
+            }
+        } 
+        console.log("nuevo precio " + productos[i].precio);
+        console.log("nuevo stock " + productos[i].stock);
+
+        if (validar){
+            alert("se modifico el producto");
+            contenedorProd.children[i].innerHTML= `
+                <h4> producto: ${productos[i].nombre}  </h4>
+                <h4> precio: ${productos [i].precio}  </h4>
+                <h4> unidades disponibles: ${productos [i].stock}  </h4>
+            `
+            ;
+            
+            editarEnBaseDatos(productos[i]);
+            
+
+        }else{
+            alert("no se modifico el producto ");
+            
+        }
+
+        contFormulario.style.visibility = "hidden";
+    }
+    return validar;
+
+}
+
+let contador = 0;
 
 
-// cargar datos de clientes
-//---------------------------------------------------
 /*
-function cargarDatosCliente(valor, mObjetivo){
-
-    let cliente = {
-        nombre: document.getElementById("invNombre"),
-        apellido: document.getElementById("invApellido"),
-        telefono: document.getElementById("invTelefono"),
-        mail: document.getElementById("invMail"),
-        tarjeta:  document.getElementById("invTarjeta"),
-        vCuota: valor,
-        objetivo: mObjetivo,
-    }
-
-    return cliente;
-}
-*/
-//valida los datos levantados del formulario 
-//-------------------------------------------------
-/*
-function validarDatos(monto,eAct,eRet, per){
-    let confirmar = false;
-    if((monto > 0) && (eAct > 0) && (eRet > 0) && (per =! 0)) {
-        confirmar = true;
-    }
-
-    return confirmar;
-    }
-*/
-//constante
-
-
-//variables----------------------------
-let nombre = "ninguno";
-let apellido = "ninguno";
-let telefono = 0;
-let mail = "ninguno";
-let tarjeta = 0;
-
-let confirmacion = false;
-
-let edadActual = 0;
-let edadRetiro = 0;
-
-let montoObjetivo = 0;
-let perfil = "ninguno";
-
-let mostrar = null;
-
-let terminar = false;
-
-//-------------------------------------------------
-// PROGRAMA
-const clientes = [];
-
-let camposFormInv = document.getElementById("invCamposForm");
-
-let botonConfirmar = document.getElementById("invConfirmar");
-botonConfirmar.addEventListener("click", cargarCliente);
-
-let botonCalcular= document.getElementById("invCalcular");
-botonCalcular.addEventListener("click",  capturarFormInv);
-
-let botonCancelar = document.getElementById("invCancelar");
-botonCancelar.addEventListener("click", limpiarFomInv);
-
-
-let contenedorDatos = document.createElement("div");
-
-const persona = new Persona (nombre,apellido,telefono,mail,tarjeta,edadActual,edadRetiro,montoObjetivo,perfil);
-
- 
-
-
-console.log(persona.mostrarApellido);
-
-/*
-const informe = document.createElement("div");
-
-informe.innerHTML = `<h3> "Estimado/a " + ${persona.nombre} </h3>
-                    <h2> "El valor de su Cuota es: "+ ${persona.calcularCuota}</h2>
-                    <p< Confirme si desea el producot </p>
-                    <button> Aceptar </button>  <button> Cancelar </button>
-                    `
-document.body.append(informe);
-
+como lograr que al actualizar no duplique la publicacion
+se podria controlar con dos funciones publicar una que se ejecuta
+cuando se ingresa, y al ingresar se cargan en un array lo que se publico
+la otra cuando se actualiza, pero se compara en el actualizar lo que ya se
+publico que estaria en array lo que ya esta publicado no publicar
 */
 
-
-/*
-salir = confirm ("¿Quieres cotizar a un nuevo cliente? Presiona aceptar para continar y cancelar para salir");
-
-const camposFormulario = document.getElementsByClassName("contenedor-formulario-cotizar");
-console.log (camposFormulario);
-
-
-
-while (salir == true){ 
-    montoObjetivo = document.getElementById("invMonto").innerText;
-    perfil = document.getElementById("invPerfil").innerText;
-    edadActual = document.getElementById("invEdadActual").innerText;
-    edadRetiro = document.getElementById("invEdadRetiro").innerText;    
-    
-    invBotCalcular = document.getElementById("invCalcular");
-    cuota = calcularCuota(perfil,montoObjetivo,plazo(edadRetiro, edadActual));
-    
-    console.log("Para lograr tu monto objetivo, en base a tu perfil de riesgo y la cantidad de tiempo hasta tu retiro es: "+ "$" + cuota);
-
-    confirmacion = confirm("¿Quires iniciar a cumplir tu objetivo?");
-
-    if (confirmacion == true){
-
-        let cli = cargarDatosCliente(cuota, montoObjetivo);
-        clientes.push(cli);
-        console.log("Felicitaciones. A iniciado el logro de su objetivos de retiro");
-    } else{
-        console.log ("Gracias por visitarnos");
-    }
-    
-    salir = confirm ("¿Quieres cotizar a un nuevo cliente? Presiona aceptar para continar y cancelar para salir");
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// copia del while------------------------------
-while (salir == true){
-
-    montoObjetivo = parseFloat(prompt("Ingresa el monto que quisieras tener a tu retiro"));
-    perfil = prompt("Ingrese su perfil de Riesgo. Ingresa una opcion Alto, Moderado, Bajo");
-    edadRetiro = parseInt(prompt("Ingresa la edad a la que se quiere retirar"));
-    console.log(edadRetiro);
-    edadActual = parseInt(prompt("Ingresa tu edad actual"));
-    console.log(edadActual);
-    montoObjetivo = parseFloat(prompt("Ingresa el monto que quisieras tener a tu retiro"));
-    console.log(montoObjetivo);
-    cuota = calcularCuota(perfil,montoObjetivo,plazo(edadRetiro, edadActual));
-    
-    console.log("Para lograr tu monto objetivo, en base a tu perfil de riesgo y la cantidad de tiempo hasta tu retiro es: "+ "$" + cuota);
-
-    confirmacion = confirm("¿Quires iniciar a cumplir tu objetivo?");
-
-    if (confirmacion == true){
-
-        let cli = cargarDatosCliente(cuota, montoObjetivo);
-        clientes.push(cli);
-        console.log("Felicitaciones. A iniciado el logro de su objetivos de retiro");
-    } else{
-        console.log ("Gracias por visitarnos");
-    }
-    
-    salir = confirm ("¿Quieres cotizar a un nuevo cliente? Presiona aceptar para continar y cancelar para salir");
-}
-
-
-
-
-confirmacion = confirm("¿Desea consultar la lista de cliesnte?");
-
-if (confirmacion == true){
-    for(let i = 0; i < clientes.length; i++){
-        console.log(clientes[i]);
-    };
-}
-*/

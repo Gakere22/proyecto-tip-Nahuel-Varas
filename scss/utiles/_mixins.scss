@@ -31,3 +31,11 @@
     width: $ancho;
     height: $alto;
 }
+// aplica a pagina productos
+@mixin contenedor{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: auto;
+}

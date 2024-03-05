@@ -130,6 +130,10 @@ a {
   size: 100px;
 }
 
+#invCalcular {
+  margin-right: 10px;
+}
+
 .form-floating {
   height: 4rem;
 }
@@ -811,6 +815,71 @@ a {
 
 .parrafo_finanzas:hover {
   color: #c6a664;
+}
+
+.contenedorCli {
+  margin: auto;
+  text-align: center;
+  color: white;
+  background-color: #786b5e;
+  max-width: 300px;
+  min-width: 300px;
+  font-size: 20px;
+  min-height: 200px;
+  border-radius: 10%;
+  border: 2px solid white;
+  margin-bottom: 1rem;
+  margin-left: 3px;
+  padding: 5px 5px 5px 5px;
+}
+
+.contenedorPaCli {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  overflow: auto;
+  max-height: 700px;
+}
+
+.saludar {
+  text-align: center;
+  max-width: 600px;
+  margin: auto;
+  font-size: 4rem;
+  color: #786b5e;
+  margin-bottom: 4rem;
+}
+
+#formularioPro {
+  visibility: hidden;
+}
+
+.estiloContenedorProductos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: auto;
+  background-color: #ece2c6;
+  min-height: 200px;
+  max-height: 800px;
+  max-width: 1200Px;
+}
+
+.estiloProducto {
+  background-color: gray;
+  border-radius: 5%;
+  border: solid 1px black;
+  align-items: center;
+  margin: auto;
+  padding: 1%;
+}
+
+.estiloProducto:hover {
+  border: solid 2px g;
+  background-color: beige;
 }
 
 /*# sourceMappingURL=style.css.map */

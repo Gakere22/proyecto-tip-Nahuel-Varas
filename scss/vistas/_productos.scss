@@ -1,0 +1,26 @@
+#formularioPro{
+   // @include contenedor;
+    visibility: hidden;
+}
+.estiloContenedorProductos{
+    @include contenedor;
+    background-color: #ece2c6;
+    min-height: 200px;
+    max-height: 800px;
+    max-width: 1200Px;
+   
+ }
+ .estiloProducto{
+    background-color: gray;
+    border-radius: 5%;
+    border: solid 1px black;
+    align-items: center;
+    margin: auto;
+    padding: 1%;
+
+}
+
+.estiloProducto:hover{
+    border: solid 2px g;
+    background-color: beige;
+}
