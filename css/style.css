@@ -16,6 +16,10 @@
   border: 1px solid #786b5e;
 }
 
+#signout_button {
+  margin-top: 2px;
+}
+
 html {
   font-size: 62.5%;
 }
@@ -185,6 +189,10 @@ a {
 .boton:hover {
   background-color: #c6a664;
   border: 1px solid #786b5e;
+}
+
+#signout_button {
+  margin-top: 2px;
 }
 
 .cuerpo {
@@ -854,6 +862,10 @@ a {
 
 #formularioPro {
   visibility: hidden;
+}
+
+#productos {
+  margin-top: 5px;
 }
 
 .estiloContenedorProductos {

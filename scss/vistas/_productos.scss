@@ -2,6 +2,11 @@
    // @include contenedor;
     visibility: hidden;
 }
+
+#productos{
+    margin-top: 5px;
+}
+
 .estiloContenedorProductos{
     @include contenedor;
     background-color: #ece2c6;

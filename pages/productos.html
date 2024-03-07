@@ -40,7 +40,7 @@
     </header>
     <section>
         <h1 class="titulo1">
-            "Bienvenido a area de modificar los datos de tus productos. Recupera los datos y lugo edita su precio y/o stock". 
+            "Bienvenido a area de modificar los datos de tus productos. Recupera los datos y lugo edita sus Datos Nombre, precio y/o stock". 
         </h1>
     </section>
     <main> 
@@ -51,13 +51,19 @@
            
             <form  id = "editaPro"  action=""  class="formulario" > 
                 <div class="row fila" >
-                    <div class="col-lg-6 col-md-6 col-sm-l2" class="formulario-item">  
+                    <div class="col-lg-4 col-md-4 col-sm-l2" class="formulario-item">  
+                        <div class="form-floating " class="campos-formularios">
+                            <input id="editaProNombre" value="nombre"  type="text" class="form-control" id="floatingInput" style="height: 5rem" placeholder="ejemplo sabana" >
+                            <label class="label-formularios" for="floatingInput">Nombre</label>
+                        </div>
+                    </div> 
+                    <div class="col-lg-4 col-md-4 col-sm-l2" class="formulario-item">  
                         <div class="form-floating " class="campos-formularios">
                             <input id="editaProPrecio" value="0.0"  type="numbre" class="form-control" id="floatingInput" style="height: 5rem" placeholder="1000" >
                             <label class="label-formularios" for="floatingInput">Precio</label>
                         </div>
                     </div>    
-                    <div class="col-lg-6 col-md-6 col-sm-l2" class="formulario-item">
+                    <div class="col-lg-4 col-md-4 col-sm-l2" class="formulario-item">
                         <div class="form-floating" class="campos-formularios">
                             <input id="editaProStock" value="00"  type="number" class="form-control" id="floatingInput" style="height: 5rem" placeholder="1000">
                             <label class="label-formularios" for="floatingInput">Stock</label>
@@ -69,6 +75,11 @@
                         <div  class="form-floating " class="campos-formularios" class="campos-formularios-botones">
                             <button id ="botonModificarPro" class="btn btn-primary btn-lg boton"  type="button"> Modificar </button>
                         </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12" class="formulario-item" class="formulario-consulta" class="boton-enviar-formularios">
+                        <div class="form-floating " class="campos-formularios" class="campos-formularios-botones">
+                            <button id ="botonAltaPro" class="btn btn-primary btn-lg boton"  type="button"> Nuevo </button>
+                        </div>
                     </div> 
                 </div>      
             </form>
@@ -78,10 +89,10 @@
                 <div class="col-lg-2 col-md-2 col-sm-12"class="formulario-item" class="formulario-consulta" class="boton-enviar-formularios">
                     <!--Add buttons to initiate auth sequence and sign out-->
                     <button id="authorize_button" class="btn btn-primary btn-lg boton" onclick="handleAuthClick()">Iniciar</button>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12"class="formulario-item" class="formulario-consulta" class="boton-enviar-formularios">   
                     <button id="signout_button" class="btn btn-primary btn-lg boton" onclick="handleSignoutClick()">Salir</button>
-
-                    <pre id="content" style="white-space: pre-wrap;"></pre>
-                </div> 
+                </div>        
             </div>
   
 

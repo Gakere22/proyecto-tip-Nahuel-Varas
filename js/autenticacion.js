@@ -6,9 +6,20 @@
 /* exported handleSignoutClick */
 
 // TODO(developer): Set to client ID and API key from the Developer Console
-const CLIENT_ID = '1069233791926-nhsgu033aqos8gli854qggvd128b4sfi.apps.googleusercontent.com';
-const API_KEY = 'AIzaSyC54deZPxGHOESXOPiXhXoiuwP92CxwiwM';
-
+/*
+de nahuel varas it
+const CLIENT_ID = '458998556155-fn36515qg390k98fu14dnv8n5s07m36v.apps.googleusercontent.com';
+const API_KEY = 'AIzaSyDDWbmwkFaewE6C7gPtBONCmU5kqJN7onw';
+*/
+/*
+de nahuel varas nv 2
+const CLIENT_ID = '576832789142-l2ivjd9pvd0hhoiomj8cngmidoesl2cn.apps.googleusercontent.com';
+const API_KEY = 'AIzaSyBYdBcSz3oZi6WgrYiSETnLCeWQyJPU_pg';
+*/
+//458998556155-fn36515qg390k98fu14dnv8n5s07m36v.apps.googleusercontent.com
+const CLIENT_ID = '458998556155-fn36515qg390k98fu14dnv8n5s07m36v.apps.googleusercontent.com';
+const API_KEY = 'AIzaSyDDWbmwkFaewE6C7gPtBONCmU5kqJN7onw';
+//AIzaSyDDWbmwkFaewE6C7gPtBONCmU5kqJN7onw
 // Discovery doc URL for APIs used by the quickstart
 const DISCOVERY_DOC = 'https://sheets.googleapis.com/$discovery/rest?version=v4';
 

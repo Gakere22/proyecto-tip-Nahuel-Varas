@@ -11,14 +11,18 @@ async function getProductos(){
     let response;
     try {
         response = await gapi.client.sheets.spreadsheets.values.get({
-            spreadsheetId: '16s3hIJy3G1C0VWUrU1EdqBmHpV3adXencfGspQZ6syU',
+            spreadsheetId: '1pYta3ZsWJXMRpye0sUHxDq6I0EvNhbdADLYQLwWFD24',
+            // '16s3hIJy3G1C0VWUrU1EdqBmHpV3adXencfGspQZ6syU' ,
+            
             range: 'Productos!A:G',
         });
     } catch (err) {
         console.error(err);
         return;
     }
-    const range = response.result;
+    const range = response.result; 
+    console.log(range);
+
     if (!range || !range.values || range.values.length == 0) {
         console.warn("No se encontraron valores");
         return;
@@ -28,13 +32,8 @@ async function getProductos(){
     if(prodPublicados.length == 0){
         await range.values.forEach((fila) => {
         
-            if (isNaN(parseInt(fila[0])) || fila[6] == 0) return;
-            /*
-            console.log(fila[0]);
-            console.log(fila[1]);
-            console.log(fila[2]);
-            console.log(fila[3]);
-            */
+            if (isNaN(parseInt(fila[0])) ) return; //|| fila[6] == 0
+            
             const producto = new Producto(fila[0],fila[1],fila[2],fila[3],fila[5],fila[6]);
             productos.push(producto);
            
@@ -144,7 +143,8 @@ async function getProductos(){
             console.log("fila a editar " + filaEditar);
             let response;
             response = await gapi.client.sheets.spreadsheets.values.update({
-                spreadsheetId: '16s3hIJy3G1C0VWUrU1EdqBmHpV3adXencfGspQZ6syU',
+                spreadsheetId: '1pYta3ZsWJXMRpye0sUHxDq6I0EvNhbdADLYQLwWFD24',
+               
                 range: `Productos!A${filaEditar}:G${filaEditar}`,
                 values: [enviar],
                 valueInputOption: "USER_ENTERED", 
@@ -156,3 +156,53 @@ async function getProductos(){
         }
         
     }
+
+
+
+    async function altaEnBaseDatos(prod){
+        try{ 
+                let tot = prod.precio * prod.stock;
+                let totales = parseInt(tot);             
+                String(totales);
+                
+                let id = prod.id;
+                String(id);
+                let precio = parseInt(prod.precio);
+                String(precio);
+                console.log("precio es string " + prod.precio);
+                let stock = prod.stock;
+                String(stock);
+                let act = prod.estadoActualizado;
+                String(act);
+                let estado = prod.estadoBd;
+                String(estado); 
+                const enviar = [
+                    prod.id,
+                    prod.nombre,
+                    prod.precio,
+                    prod.stock,
+                    totales,
+                    prod.estadoActualizado,
+                    prod.estadoBd,
+                ]
+               
+                console.log("id: " + prod.id);
+                id = parseInt(id) + 1;
+                const filaAlta = (id + 1);
+                console.log("fila alta " + filaAlta);
+                let response;
+                response = await gapi.client.sheets.spreadsheets.values.update({
+                    spreadsheetId: '1pYta3ZsWJXMRpye0sUHxDq6I0EvNhbdADLYQLwWFD24',
+                    //'16s3hIJy3G1C0VWUrU1EdqBmHpV3adXencfGspQZ6syU',
+                    range: `Productos!A${filaAlta}:G${filaAlta}`,
+                    values: [enviar],
+                    valueInputOption: "USER_ENTERED", 
+                });
+                console.log("ngrese los valore en BD");
+                return response;
+            }catch(error){
+                console.warn(error);
+            }
+            
+        }
+    
