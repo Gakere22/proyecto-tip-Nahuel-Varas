@@ -868,6 +868,19 @@ a {
   margin-top: 5px;
 }
 
+#titulaSalida {
+  text-align: center;
+}
+
+.mensajeSalida {
+  align-items: center;
+  min-height: 100px;
+  max-width: 400px;
+  background-color: #c6a664;
+  margin: auto;
+  padding-top: 30px;
+}
+
 .estiloContenedorProductos {
   display: flex;
   align-items: center;

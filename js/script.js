@@ -12,6 +12,7 @@ class Producto{
     estadoActualizado = 0;
     estadoBd = 0;
     indice = null;
+    idContenedorHijo = null;
 
     constructor(id,nombre,precio,cantidad,actualizar, estadoBd){
         this.id = id;
@@ -102,12 +103,16 @@ class Producto{
             contFormulario.style.visibility = "visible";
             alert("precio" + productos[this.indice].precio + " y stock:" + productos[this.indice].stock);
             console.log("ingresa a formulario");    
+            let nombre = document.getElementById("editaProNombre");
+            nombre.value = "nombre";
             let pre = document.getElementById("editaProPrecio");
             pre.value = "0.0";
             let sto = document.getElementById("editaProStock");
             sto.value = "00";
             contador = this.indice; 
+            contador1 = this.indice;
             botonModificar.addEventListener("click", () => capturarDatos(this.indice));
+            botonBaja.addEventListener("click", () => eliminarProducto(this.indice));
             return true;
         
     }
@@ -145,15 +150,32 @@ let botonModificar = document.getElementById("botonModificarPro");
 let botonAlta = document.getElementById("botonAltaPro");
 botonAlta.addEventListener("click", capturarDatosAlta);
 let botonSalir = document.getElementById("signout_button");
-botonSalir.addEventListener("click", );
+botonSalir.addEventListener("click",salirProductos);
+let botonBaja = document.getElementById("botonBajaPro");
+
+let mensajeSalir = null;
+//contenedro mensaje salida
+mensajeSalir = document.createElement("div");
+mensajeSalir.setAttribute("class","mensajeSalida")
+mensajeSalir.innerHTML = `
+    <h1 id= "titulaSalida" > Gracias por tu gestion </h1>
+    `
+contenedorProd.insertAdjacentElement("beforebegin", mensajeSalir);
+mensajeSalir.style.display = "none";
+
+let tituloSalida1 = document.getElementById("tituloSalida1");
+let contador = 0;
+let contador1 = 0; 
+
 
 
 function publicar(prod,i){
 
         if((prod.estadoBd == 1)){ 
             console.log("este es el precio antes de publicar "+ prod.precio)
-            contenedorProd.append(prod.publicar(i));
-
+            contenedorProd.appendChild(prod.publicar(i));
+            let idHijo = contenedorProd.children.length - 1;
+            prod.idContenedorHijo = idHijo;
         }else{
             console.log("entro al else de publicar");
         }
@@ -185,8 +207,10 @@ function validarNumero(cadena){
 
 
  function capturarDatos(i){
+    console.log("se recibe el indice "+ i);
     let validar = false;
     if( contador == i) {
+        console.log("entra con el indice "+ i);
         //console.log("ingresa a capturar datos")
         let contFormulario = document.getElementById("formularioPro");
         let pre = document.getElementById("editaProPrecio");
@@ -225,13 +249,15 @@ function validarNumero(cadena){
                 }
             }
         } 
-        console.log("nuevo precio " + productos[i].nombre);
-        console.log("nuevo precio " + productos[i].precio);
-        console.log("nuevo stock " + productos[i].stock);
-
+    
         if (validar){
             alert("se modifico el producto");
-            contenedorProd.children[i].innerHTML= `
+            //console.log("el indice sigue siendo " + i);
+            //console.log("el largo del array es de "+ productos.length);
+            let idHijo = productos[i].idContenedorHijo;
+          //  console.log("el indice del hijo es "+ idHijo);
+            //console.log("el largo del array de hijos es de "+ contenedorProd.children.length);
+            contenedorProd.children[idHijo].innerHTML= `
                 <h4> producto: ${productos[i].nombre}  </h4>
                 <h4> precio: ${productos [i].precio}  </h4>
                 <h4> unidades disponibles: ${productos [i].stock}  </h4>
@@ -297,18 +323,21 @@ function capturarDatosAlta(){
                 }
             }
         } 
-        console.log("nuevo precio " + nombre);
-        console.log("nuevo precio " + precio);
-        console.log("nuevo stock " + cantidad);
-
+       
         if (validar){
             alert("se dio de alta el producto");
-            idNuevoPro = productos.length;    
+            idNuevoPro = productos.length + 1; 
+            console.log("idNuevoProducto = "+idNuevoPro);   
             const producto = new Producto(idNuevoPro,nombre,precio,cantidad,1,1);
             productos.push(producto);
-            contenedorProd.append(producto.publicar(idNuevoPro));
-            
-            
+            let indice = idNuevoPro - 1;
+            contenedorProd.appendChild(producto.publicar(indice));
+            let idHijo = contenedorProd.children.length - 1;
+            idNuevoPro = idNuevoPro - 1;
+            productos[idNuevoPro].idContenedorHijo = idHijo;
+            console.log("id de hijo en nuevo producto " +productos[idNuevoPro].idContenedorHijo);
+            console.log("id del producot es" + productos[idNuevoPro].id);
+            console.log("id del indice es" + productos[idNuevoPro].indice);
             altaEnBaseDatos(producto);
             
 
@@ -322,19 +351,21 @@ function capturarDatosAlta(){
     return validar;
 
 }
-/*
+
 function salirProductos(){
+    contenedorProd.style.visibility = "hidden";  
+    mensajeSalir.style.display = "block";
+    tituloSalida1.style.visibility = "hidden";
+    setTimeout(function(){
+        mensajeSalir.style.display = "none";
+        tituloSalida1.style.visibility = "visible";
+    },  3000);
     
-    let mensaje = document.createElement("div");
-    mensaje.innerHTML = `
-        <h3> Gracias por tu gestion </h3>
-        `
-        contenedorProd.
 }
-*/
 
 
-let contador = 0;
+
+
 
 
 /*
