@@ -101,14 +101,31 @@ class Producto{
         
             let contFormulario = document.getElementById("formularioPro");
             contFormulario.style.visibility = "visible";
-            alert("precio" + productos[this.indice].precio + " y stock:" + productos[this.indice].stock);
-            console.log("ingresa a formulario");    
+            
+            Swal.fire({
+                position: "top-center",
+                icon: "info",
+                title: "Seleccionaste el roducto "+ productos [this.indice].nombre +" podes modificarlo o eliminarlo",
+                showConfirmButton: false,
+                timer: 2000
+              });
+           
+           // alert("precio" + productos[this.indice].precio + " y stock:" + productos[this.indice].stock);
+               
             let nombre = document.getElementById("editaProNombre");
-            nombre.value = "nombre";
-            let pre = document.getElementById("editaProPrecio");
-            pre.value = "0.0";
+            let pre = document.getElementById("editaProPrecio");          
             let sto = document.getElementById("editaProStock");
-            sto.value = "00";
+            
+            if (localStorage.length > 0){
+                nombre.value = localStorage.getItem("nombre");
+                pre.value = localStorage.getItem("precio");
+                sto.value = localStorage.getItem("stock");
+            }else{
+                nombre.value = "nombre";
+                pre.value = "0.0";
+                sto.value = "00";
+            }
+
             contador = this.indice; 
             contador1 = this.indice;
             botonModificar.addEventListener("click", () => capturarDatos(this.indice));
@@ -172,19 +189,17 @@ let contador1 = 0;
 function publicar(prod,i){
 
         if((prod.estadoBd == 1)){ 
-            console.log("este es el precio antes de publicar "+ prod.precio)
             contenedorProd.appendChild(prod.publicar(i));
             let idHijo = contenedorProd.children.length - 1;
             prod.idContenedorHijo = idHijo;
         }else{
-            console.log("entro al else de publicar");
+            console.warn("producto con no con borrado logico");
         }
     
 }
 
 
-function cargarProductos(){  
-    console.log("entro a cargar producots");  
+function cargarProductos(){    
     prodPublicados = productos;
     productos.forEach((pro,i) => publicar(pro,i));
     
@@ -207,28 +222,31 @@ function validarNumero(cadena){
 
 
  function capturarDatos(i){
-    console.log("se recibe el indice "+ i);
+
     let validar = false;
     if( contador == i) {
-        console.log("entra con el indice "+ i);
-        //console.log("ingresa a capturar datos")
         let contFormulario = document.getElementById("formularioPro");
         let pre = document.getElementById("editaProPrecio");
-        //console.log ("valor del contenido de campo precio "+ pre.value);
         let nom = document.getElementById("editaProNombre");
         let valor = null;
         if ((nom.value != "nombre")){
+            localStorage.setItem("nombre",nom.value);
             productos[i].nombre = nom.value;
             validar = true;
         }
         if ((pre.value != "0.0" )){
             if(validarNumero(pre.value)){
+                localStorage.setItem("precio", pre.value);
                 valor = parseFloat(pre.value); 
                 if(valor >= 0){
                     productos [i].precio = parseFloat(valor);
                     validar = true;
                 }else{
-                    alert("el valor del campo cantidad debe ser mayor igual a 0");
+                    Swal.fire({
+                        icon: "error",
+                        title: "el valor del campo precio debe ser mayor igual a 0",
+                      });
+                  
                     return true;                       
                 }
             }
@@ -239,24 +257,32 @@ function validarNumero(cadena){
         console.log ( sto.value);
         if ((sto.value != "00" ) ){
             if (validarNumero(sto.value)){
+                localStorage.setItem("stock", sto.value);
                 valor = parseInt(sto.value);
                 if (valor >= 0){
                     productos [i].modificarStock(parseInt(valor));
                     validar = true;
                 }else{
-                    alert("el valor del campo cantidad debe ser mayor igual a 0");  
+                    Swal.fire({
+                        icon: "error",
+                        title: "el valor del campo cantidad debe ser mayor igual a 0",
+                      });
+                     
                      return true;
                 }
             }
         } 
     
         if (validar){
-            alert("se modifico el producto");
-            //console.log("el indice sigue siendo " + i);
-            //console.log("el largo del array es de "+ productos.length);
+            Swal.fire({
+                position: "top-center",
+                icon: "success",
+                title: "Se modifico el producto",
+                showConfirmButton: false,
+                timer: 1500
+              });        
             let idHijo = productos[i].idContenedorHijo;
-          //  console.log("el indice del hijo es "+ idHijo);
-            //console.log("el largo del array de hijos es de "+ contenedorProd.children.length);
+                    
             contenedorProd.children[idHijo].innerHTML= `
                 <h4> producto: ${productos[i].nombre}  </h4>
                 <h4> precio: ${productos [i].precio}  </h4>
@@ -268,8 +294,10 @@ function validarNumero(cadena){
             
 
         }else{
-            alert("no se modifico el producto ");
-            
+            Swal.fire({
+                icon: "error",
+                title: "No se Modifico el producto",
+              });
         }
 
         contFormulario.style.visibility = "hidden";
@@ -282,27 +310,33 @@ function validarNumero(cadena){
 function capturarDatosAlta(){
     let validar = false;
     if( validar == false) {
-        //console.log("ingresa a capturar datos")
+       
         let contFormulario = document.getElementById("formularioPro");
         let pre = document.getElementById("editaProPrecio");
-        //console.log ("valor del contenido de campo precio "+ pre.value);
+       
         let nom = document.getElementById("editaProNombre");
         let valor = null;
         let nombre = null;
         let precio = null;
         let cantidad = null;
         if ((nom.value != "nombre")){
+            localStorage.setItem("nombre", nom.value);
             nombre = nom.value;
             validar = true;
         }
         if ((pre.value != "0.0" )){
             if(validarNumero(pre.value)){
+                localStorage.setItem("precio", pre.value);
                 valor = parseFloat(pre.value); 
                 if(valor >= 0){
                     precio = parseFloat(valor);
                     validar = true;
                 }else{
-                    alert("el valor del campo cantidad debe ser mayor igual a 0");
+                    Swal.fire({
+                        icon: "error",
+                        title: "el valor del campo precio debe ser mayor igual a 0",
+                      });
+                    
                     return true;                       
                 }
             }
@@ -313,21 +347,25 @@ function capturarDatosAlta(){
         console.log ( sto.value);
         if ((sto.value != "00" ) ){
             if (validarNumero(sto.value)){
+                localStorage.setItem("stock", sto.value);
                 valor = parseInt(sto.value);
                 if (valor >= 0){
                     cantidad = (parseInt(valor));
                     validar = true;
                 }else{
-                    alert("el valor del campo cantidad debe ser mayor igual a 0");  
+                    Swal.fire({
+                        icon: "error",
+                        title: "el valor del campo cantidad debe ser mayor igual a 0",
+                      });
+                      
                      return true;
                 }
             }
         } 
        
         if (validar){
-            alert("se dio de alta el producto");
-            idNuevoPro = productos.length + 1; 
-            console.log("idNuevoProducto = "+idNuevoPro);   
+           
+            idNuevoPro = productos.length + 1;   
             const producto = new Producto(idNuevoPro,nombre,precio,cantidad,1,1);
             productos.push(producto);
             let indice = idNuevoPro - 1;
@@ -335,14 +373,21 @@ function capturarDatosAlta(){
             let idHijo = contenedorProd.children.length - 1;
             idNuevoPro = idNuevoPro - 1;
             productos[idNuevoPro].idContenedorHijo = idHijo;
-            console.log("id de hijo en nuevo producto " +productos[idNuevoPro].idContenedorHijo);
-            console.log("id del producot es" + productos[idNuevoPro].id);
-            console.log("id del indice es" + productos[idNuevoPro].indice);
+            Swal.fire({
+                position: "top-center",
+                icon: "success",
+                title: "Se dio de alta el producto",
+                showConfirmButton: false,
+                timer: 1500
+              });
             altaEnBaseDatos(producto);
             
 
         }else{
-            alert("no se dio de alta el producto ");
+            Swal.fire({
+                icon: "error",
+                title: "No se dio de alta el producto",
+              });
             
         }
 
@@ -360,7 +405,7 @@ function salirProductos(){
         mensajeSalir.style.display = "none";
         tituloSalida1.style.visibility = "visible";
     },  3000);
-    
+    localStorage.clear();
 }
 
 

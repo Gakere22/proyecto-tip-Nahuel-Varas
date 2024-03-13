@@ -12,8 +12,6 @@ async function getProductos(){
     try {
         response = await gapi.client.sheets.spreadsheets.values.get({
             spreadsheetId: '1pYta3ZsWJXMRpye0sUHxDq6I0EvNhbdADLYQLwWFD24',
-            // '16s3hIJy3G1C0VWUrU1EdqBmHpV3adXencfGspQZ6syU' ,
-            
             range: 'Productos!A:G',
         });
     } catch (err) {
@@ -32,15 +30,14 @@ async function getProductos(){
     if(prodPublicados.length == 0){
         await range.values.forEach((fila) => {
         
-            if (isNaN(parseInt(fila[0])) ) return; //|| fila[6] == 0
+            if (isNaN(parseInt(fila[0])) ) return; 
             
             const producto = new Producto(fila[0],fila[1],fila[2],fila[3],fila[5],fila[6]);
             productos.push(producto);
            
     
           });
-          console.log("agrego array en primera vuelta!");
-          console.log(productos);
+         
         }else{
             let identificador = -1;
             let actualizar = -1;
@@ -51,41 +48,32 @@ async function getProductos(){
                 identificador = parseInt(fila[0]);
                 actualizar = parseInt(fila[5]);
                 let i = 0;
-                console.log("este es el primer id");
-                console.log(prodPublicados[i].id);
-                console.log(identificador);
-                console.log(prodPublicados.length);
+              
                 while ((i < prodPublicados.length) && (prodPublicados[i].id != identificador)){
-                    console.log("ENTRO EL WHILE"); 
+                
                     i++;   
                 }
-                console.log("salgo del while ");
-                console.log(prodPublicados[i].id);
-                console.log(identificador);
+    
                 if ((i >= prodPublicados.length)){
                     const producto = new Producto(fila[0],fila[1],fila[2],fila[3],fila[5],fila[6]);
                     productos.push(producto);
                     contadorNuevoProd++;    
-                    console.log("se cargo producto nuevo");
+    
                 }else{
                     if((prodPublicados[i].id == identificador) && (prodPublicados[i].estadoActualizado != actualizar)){
                         const producto = new Producto(fila[0],fila[1],fila[2],fila[3],fila[5],fila[6]);
-                        producto.estadoActualizado = 1; //esto se elimina cuando cuando modificao la base de datos desde el codigo
+                        producto.estadoActualizado = 1; 
                         console.log(productos[identificador - 1]);
                         productos[identificador - 1].contenedorProdDatos.remove();
                         console.log(producto);
                         productos[identificador - 1] = producto;
                         console.log(productos[identificador - 1]);
                        
-                        console.log("se actualizo un producto");
-                        //volver a 1 el campo modificado de la base de datos mientras tanto lo igualo desde el estado
+                       
                         }    
                     }
                 
-        
               });
-              console.log("agrego producto en actualizacion se agregaron " + contadorNuevoProd);
-              console.log(productos);
         }
      
    
@@ -97,12 +85,10 @@ async function getProductos(){
         let tot = prod.precio * prod.stock;
         let totales = parseInt(tot);             
         String(totales);
-        
         let id = prod.id;
         String(id);
         let precio = parseInt(prod.precio);
         String(precio);
-        console.log("precio es string " + prod.precio);
         let stock = prod.stock;
         String(stock);
         let act = prod.estadoActualizado;
@@ -119,10 +105,9 @@ async function getProductos(){
             prod.estadoBd,
         ]
         
-        console.log("id: " + prod.id);
         id = parseInt(id);
         const filaEditar = (id + 1);
-        console.log("fila a editar " + filaEditar);
+
         let response;
         response = await gapi.client.sheets.spreadsheets.values.update({
             spreadsheetId: '1pYta3ZsWJXMRpye0sUHxDq6I0EvNhbdADLYQLwWFD24',
@@ -131,7 +116,7 @@ async function getProductos(){
             values: [enviar],
             valueInputOption: "USER_ENTERED", 
         });
-        console.log("ngrese los valore en BD");
+        
         return response;
     }catch(error){
         console.warn(error);
@@ -151,7 +136,6 @@ async function altaEnBaseDatos(prod){
                 String(id);
                 let precio = parseInt(prod.precio);
                 String(precio);
-                console.log("precio es string " + prod.precio);
                 let stock = prod.stock;
                 String(stock);
                 let act = prod.estadoActualizado;
@@ -168,19 +152,17 @@ async function altaEnBaseDatos(prod){
                     prod.estadoBd,
                 ]
                
-                console.log("id: " + prod.id);
                 id = parseInt(id);
                 const filaAlta = (id + 1);
-                console.log("fila alta " + filaAlta);
                 let response;
                 response = await gapi.client.sheets.spreadsheets.values.update({
                     spreadsheetId: '1pYta3ZsWJXMRpye0sUHxDq6I0EvNhbdADLYQLwWFD24',
-                    //'16s3hIJy3G1C0VWUrU1EdqBmHpV3adXencfGspQZ6syU',
+
                     range: `Productos!A${filaAlta}:G${filaAlta}`,
                     values: [enviar],
                     valueInputOption: "USER_ENTERED", 
                 });
-                console.log("ngrese los valore en BD");
+                
                 return response;
             }catch(error){
                 console.warn(error);
@@ -197,7 +179,6 @@ async function eliminarProducto(i){
         if(contador1 == prod.indice){
             productos[i].estadoBd = 0;
             productos[i].contenedorProdDatos.style.display = "none";
-            console.log("elimino producto id "+ prod.id);
             let tot = prod.precio * prod.stock;
             let totales = parseInt(tot);             
             String(totales);
@@ -206,7 +187,6 @@ async function eliminarProducto(i){
             String(id);
             let precio = parseInt(prod.precio);
             String(precio);
-            console.log("precio es string " + prod.precio);
             let stock = prod.stock;
             String(stock);
             let act = prod.estadoActualizado;
@@ -223,10 +203,8 @@ async function eliminarProducto(i){
                 prod.estadoBd,
             ]
             
-            console.log("id: " + prod.id);
             id = parseInt(id);
             const filaBaja = (id + 1);
-            console.log("fila a editar " + filaBaja);
             let response;
             response = await gapi.client.sheets.spreadsheets.values.update({
                 spreadsheetId: '1pYta3ZsWJXMRpye0sUHxDq6I0EvNhbdADLYQLwWFD24',
@@ -235,7 +213,13 @@ async function eliminarProducto(i){
                 values: [enviar],
                 valueInputOption: "USER_ENTERED", 
             });
-            console.log("ngrese los valore en BD");
+            Swal.fire({
+                position: "top-center",
+                icon: "success",
+                title: "Se elimino el producto",
+                showConfirmButton: false,
+                timer: 2000
+              });
             contador1 = 0;
             return response;
         }
