@@ -1,6 +1,6 @@
 /**
- * MMe trae los productos desde la hoja de google sheets
- * de esta hoja: https://docs.google.com/spreadsheets/d/16s3hIJy3G1C0VWUrU1EdqBmHpV3adXencfGspQZ6syU/edit
+ * Me trae los productos desde la hoja de google sheets
+ * 
  */
 
 
@@ -18,24 +18,21 @@ async function getProductos(){
         console.error(err);
         return;
     }
-    const range = response.result; 
-    console.log(range);
+    const range = response.result;
 
     if (!range || !range.values || range.values.length == 0) {
         console.warn("No se encontraron valores");
         return;
     }
-    console.log(range.values);
+   
     
     if(prodPublicados.length == 0){
         await range.values.forEach((fila) => {
-        
             if (isNaN(parseInt(fila[0])) ) return; 
             
             const producto = new Producto(fila[0],fila[1],fila[2],fila[3],fila[5],fila[6]);
             productos.push(producto);
            
-    
           });
          
         }else{
@@ -60,15 +57,11 @@ async function getProductos(){
                     contadorNuevoProd++;    
     
                 }else{
-                    if((prodPublicados[i].id == identificador) && (prodPublicados[i].estadoActualizado != actualizar)){
+                    if(prodPublicados[i].id == identificador) {
                         const producto = new Producto(fila[0],fila[1],fila[2],fila[3],fila[5],fila[6]);
                         producto.estadoActualizado = 1; 
-                        console.log(productos[identificador - 1]);
                         productos[identificador - 1].contenedorProdDatos.remove();
-                        console.log(producto);
                         productos[identificador - 1] = producto;
-                        console.log(productos[identificador - 1]);
-                       
                        
                         }    
                     }
@@ -78,6 +71,7 @@ async function getProductos(){
      
    
  }
+
  
 
  async function editarEnBaseDatos(prod){
@@ -116,7 +110,7 @@ async function getProductos(){
             values: [enviar],
             valueInputOption: "USER_ENTERED", 
         });
-        
+        localStorage.clear();
         return response;
     }catch(error){
         console.warn(error);
@@ -162,7 +156,7 @@ async function altaEnBaseDatos(prod){
                     values: [enviar],
                     valueInputOption: "USER_ENTERED", 
                 });
-                
+                localStorage.clear();
                 return response;
             }catch(error){
                 console.warn(error);

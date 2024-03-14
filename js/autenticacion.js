@@ -6,20 +6,12 @@
 /* exported handleSignoutClick */
 
 // TODO(developer): Set to client ID and API key from the Developer Console
-/*
-de nahuel varas it
+
+
+
 const CLIENT_ID = '458998556155-fn36515qg390k98fu14dnv8n5s07m36v.apps.googleusercontent.com';
 const API_KEY = 'AIzaSyDDWbmwkFaewE6C7gPtBONCmU5kqJN7onw';
-*/
-/*
-de nahuel varas nv 2
-const CLIENT_ID = '576832789142-l2ivjd9pvd0hhoiomj8cngmidoesl2cn.apps.googleusercontent.com';
-const API_KEY = 'AIzaSyBYdBcSz3oZi6WgrYiSETnLCeWQyJPU_pg';
-*/
-//458998556155-fn36515qg390k98fu14dnv8n5s07m36v.apps.googleusercontent.com
-const CLIENT_ID = '458998556155-fn36515qg390k98fu14dnv8n5s07m36v.apps.googleusercontent.com';
-const API_KEY = 'AIzaSyDDWbmwkFaewE6C7gPtBONCmU5kqJN7onw';
-//AIzaSyDDWbmwkFaewE6C7gPtBONCmU5kqJN7onw
+
 // Discovery doc URL for APIs used by the quickstart
 const DISCOVERY_DOC = 'https://sheets.googleapis.com/$discovery/rest?version=v4';
 
@@ -89,31 +81,29 @@ function handleAuthClick() {
             throw (resp);
         }
         document.getElementById('signout_button').style.visibility = 'visible';
-        document.getElementById('authorize_button').innerText = 'Actualizar';
+        document.getElementById('authorize_button').style.display = 'none';
         await getProductos();
         await cargarProductos();
     };
 
     if (gapi.client.getToken() === null) {
-        // Prompt the user to select a Google Account and ask for consent to share their data
-        // when establishing a new session.
+       
         tokenClient.requestAccessToken({ prompt: 'consent' });
     } else {
-        // Skip display of account chooser and consent dialog for an existing session.
+        
         tokenClient.requestAccessToken({ prompt: '' });
     }
 }
 
 /**
- *  Sign out the user upon button click.
+ *  Salir 
  */
 function handleSignoutClick() {
     const token = gapi.client.getToken();
     if (token !== null) {
         google.accounts.oauth2.revoke(token.access_token);
         gapi.client.setToken('');
-        //document.getElementById('content').innerText = '';
-        document.getElementById('authorize_button').innerText = 'Ingresar';
+        document.getElementById('authorize_button').style.display = 'block'; 
         document.getElementById('signout_button').style.visibility = 'hidden';
     }
 

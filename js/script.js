@@ -1,9 +1,7 @@
-//credencial api AIzaSyC54deZPxGHOESXOPiXhXoiuwP92CxwiwM
-// id cliente 1069233791926-nhsgu033aqos8gli854qggvd128b4sfi.apps.googleusercontent.com
 
 console.log("se crea el objeto")
 class Producto{
-    id = 0; //_ es para que este protegida en la herencia se puede ver
+    id = 0; 
     nombre = "ninguno";
     precio = 0;
     stock = 0;
@@ -115,16 +113,9 @@ class Producto{
             let nombre = document.getElementById("editaProNombre");
             let pre = document.getElementById("editaProPrecio");          
             let sto = document.getElementById("editaProStock");
-            
-            if (localStorage.length > 0){
-                nombre.value = localStorage.getItem("nombre");
-                pre.value = localStorage.getItem("precio");
-                sto.value = localStorage.getItem("stock");
-            }else{
-                nombre.value = "nombre";
-                pre.value = "0.0";
-                sto.value = "00";
-            }
+            nombre.value = "nombre";
+            pre.value = "0.0";
+            sto.value = "00";
 
             contador = this.indice; 
             contador1 = this.indice;
@@ -184,10 +175,34 @@ let tituloSalida1 = document.getElementById("tituloSalida1");
 let contador = 0;
 let contador1 = 0; 
 
+let nom = document.getElementById("editaProNombre");
+nom.addEventListener("focus", (event) => {
+    event.target.style.background = "grey";
+  });
+nom.addEventListener("blur", ()=>localStorage.setItem("nombre", nom.value));
+nom.addEventListener("blur", (event) => {
+    event.target.style.background = "";
+  });
 
+let pre = document.getElementById("editaProPrecio");
+pre.addEventListener("focus", (event) => {
+    event.target.style.background = "grey";
+  });
+pre.addEventListener("blur", ()=> localStorage.setItem("precio", pre.value));
+pre.addEventListener("blur", (event) => {
+    event.target.style.background = "";
+  });
+let sto = document.getElementById("editaProStock");
+sto.addEventListener("focus", (event) => {
+    event.target.style.background = "grey";
+  });
+sto.addEventListener("blur", ()=>localStorage.setItem("stock", sto.value));
+sto.addEventListener("blur", (event) => {
+    event.target.style.background = "";
+  });
 
 function publicar(prod,i){
-
+        contenedorProd.style.visibility = "visible";
         if((prod.estadoBd == 1)){ 
             contenedorProd.appendChild(prod.publicar(i));
             let idHijo = contenedorProd.children.length - 1;
@@ -230,13 +245,11 @@ function validarNumero(cadena){
         let nom = document.getElementById("editaProNombre");
         let valor = null;
         if ((nom.value != "nombre")){
-            localStorage.setItem("nombre",nom.value);
             productos[i].nombre = nom.value;
             validar = true;
         }
         if ((pre.value != "0.0" )){
             if(validarNumero(pre.value)){
-                localStorage.setItem("precio", pre.value);
                 valor = parseFloat(pre.value); 
                 if(valor >= 0){
                     productos [i].precio = parseFloat(valor);
@@ -254,10 +267,9 @@ function validarNumero(cadena){
         }
 
         let sto = document.getElementById("editaProStock");
-        console.log ( sto.value);
+    
         if ((sto.value != "00" ) ){
             if (validarNumero(sto.value)){
-                localStorage.setItem("stock", sto.value);
                 valor = parseInt(sto.value);
                 if (valor >= 0){
                     productos [i].modificarStock(parseInt(valor));
@@ -326,7 +338,7 @@ function capturarDatosAlta(){
         }
         if ((pre.value != "0.0" )){
             if(validarNumero(pre.value)){
-                localStorage.setItem("precio", pre.value);
+               
                 valor = parseFloat(pre.value); 
                 if(valor >= 0){
                     precio = parseFloat(valor);
@@ -344,10 +356,10 @@ function capturarDatosAlta(){
         }
 
         let sto = document.getElementById("editaProStock");
-        console.log ( sto.value);
+        
         if ((sto.value != "00" ) ){
             if (validarNumero(sto.value)){
-                localStorage.setItem("stock", sto.value);
+
                 valor = parseInt(sto.value);
                 if (valor >= 0){
                     cantidad = (parseInt(valor));
@@ -398,7 +410,9 @@ function capturarDatosAlta(){
 }
 
 function salirProductos(){
-    contenedorProd.style.visibility = "hidden";  
+    let contFormulario = document.getElementById("formularioPro");
+    contenedorProd.style.visibility = "hidden";
+    contFormulario.style.visibility = "hidden";  
     mensajeSalir.style.display = "block";
     tituloSalida1.style.visibility = "hidden";
     setTimeout(function(){
@@ -406,6 +420,7 @@ function salirProductos(){
         tituloSalida1.style.visibility = "visible";
     },  3000);
     localStorage.clear();
+    
 }
 
 
@@ -413,11 +428,4 @@ function salirProductos(){
 
 
 
-/*
-como lograr que al actualizar no duplique la publicacion
-se podria controlar con dos funciones publicar una que se ejecuta
-cuando se ingresa, y al ingresar se cargan en un array lo que se publico
-la otra cuando se actualiza, pero se compara en el actualizar lo que ya se
-publico que estaria en array lo que ya esta publicado no publicar
-*/
 
